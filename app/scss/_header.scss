@@ -1,0 +1,119 @@
+.header {
+  background-color: $white;
+
+  nav {
+    min-height: 60px;
+    @include breakpoints-up(large) {
+      min-height: 80px;
+    }
+  }
+
+  &__logo {
+    img {
+      width: 8.8125rem;
+      height: 1.375rem;
+    }
+  }
+
+  // hamburger menu
+
+  &__toggle {
+    > span {
+      display: block;
+      width: 1.625rem;
+      height: 0.125rem;
+      background-color: $darkblue;
+      transition: all 300ms ease-in-out;
+      transform-origin: 4.5px 1.5px;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  // Hamburger Open Styles
+  &.open {
+    .header__toggle {
+      > span:first-child {
+        transform: rotate(45deg);
+      }
+
+      > span:nth-child(2) {
+        opacity: 0;
+      }
+
+      > span:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &__links {
+    min-width: 330px;
+    a {
+      font-size: $font-2;
+      position: relative;
+      color: $grayishblue;
+
+      &::after {
+        content: "";
+        top: 2.8rem;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        height: 0.25rem;
+        background-image: linear-gradient(45deg, $limegreen, $brightcyan);
+        opacity: 0;
+        transition: opacity 200ms ease-in-out;
+      }
+
+      &:hover,
+      &:hover::after {
+        opacity: 1;
+        color: $darkblue;
+      }
+    }
+  }
+
+  .overlay {
+    display: none;
+    position: absolute;
+    top: 60px;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(180deg, $darkblue, transparent);
+    z-index: 99;
+  }
+
+  &__m-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 1.5rem 1.5rem 0 1.5rem;
+    padding: 1.625rem;
+    background-color: $white;
+    border-radius: 4px;
+    z-index: 100;
+    a {
+      display: block;
+      font-size: $font-3;
+      color: $darkblue;
+      text-align: center;
+      padding: 0.625rem;
+    }
+  }
+  .block {
+    display: block;
+
+    @include breakpoints-up(large) {
+      display: none;
+    }
+  }
+}
